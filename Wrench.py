@@ -1,6 +1,5 @@
 import socket
 
-
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connect to the target host and port
@@ -17,8 +16,6 @@ while '\n' in data and data.find('total:') == -1:
     #seperate the lines in data into a list using the splitlines method, e.g. "hello\nwhy are you here?\n" becomes [{"hello"}, {"why are you here?"}]
     lineList = data.splitlines()
 
-    ## unnecessary testing print statement to print data 
-    # print(data)
 
     # loop through the list created through the previous splitlines method, essentially checking each line of the data to see if it is an integer
     for x in lineList:
