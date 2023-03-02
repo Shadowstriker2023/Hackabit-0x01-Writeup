@@ -32,7 +32,7 @@ sumOfNumbers =0
 
 After this adding up all the numbers is a rather simple while loop with a try/except as shown below
 
-'''python
+```python
 ##collect a portion of the data from sock
 data = sock.recv(10000).decode()
 
@@ -57,13 +57,13 @@ while '\n' in data and data.find('total:') == -1:
     
     ##get new data to continue adding new numbers and to prevent an infinite loop in the while loop
     data = sock.recv(10000).decode()
-'''
+```
 
 This will add up all the numbers until there is no longer a /n character and "total" is not included (as I found through testing that this will be included right before the flag).
 
 We now just need to run the contents of the loop one more time because it won't register the last line of data (the one without the newline)
 
-'''python
+```python
 #seperate the lines in data into a list using the splitlines method, e.g. "hello\nwhy are you here?\n" becomes [{"hello"}, {"why are you here?"}]
 lineList = data.splitlines()
 
@@ -81,11 +81,11 @@ for x in lineList:
     except ValueError:
         pass
 
-'''
+```
 
 Once we've done this we can get our input by sending the sumOfNumbers that we've been curating to the target host
 
-'''python
+```python
 
 #convert the sumOfNumbers to a string so that it can be converted into byte form/encoded in the send request
 strNumber2 = str(sumOfNumbers)
@@ -93,16 +93,16 @@ strNumber2 = str(sumOfNumbers)
 #send the sumOfNumbers after using .encode() to turn it into byte form
 sock.send(strNumber2.encode())
 
-'''
+```
 
 Now all that's left is to once more retrieve data from the host to get our flag then print it
 
-'''python
+```python
 
 ##print the data that will be added after sending the encoded strNumbers2
 print(sock.recv(10000).decode())
 
-'''
+```
 
 # Flag
 
